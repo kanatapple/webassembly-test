@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Rust to WebAssembly Test</title>
+</head>
+
+<body>
+  <script>
+    var Module = {};
+    fetch('index.wasm')
+      .then((response) => response.arrayBuffer())
+      .then((buffer) => {
+        Module.wasmBinary = buffer;
+        var script = document.createElement('script');
+        script.src = 'index.js';
+        document.body.appendChild(script);
+      });
+  </script>
+</body>
+
+</html>
